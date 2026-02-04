@@ -1,0 +1,69 @@
+
+---Downloaded files---
+The import files for: Rent a Yacht Elementor Demo were successfully downloaded!
+Initial max execution time = 120
+Files info:
+Site URL = https://mgvacanze.com
+Data file = /home/customer/www/mgvacanze.com/public_html/wp-content/uploads/2025/11/demo-content-import-file_2025-11-06__15-54-49.xml
+Widget file = /home/customer/www/mgvacanze.com/public_html/wp-content/uploads/2025/11/demo-widgets-import-file_2025-11-06__15-54-49.json
+Customizer file = not defined!
+Redux files:
+wprentals_admin -> /home/customer/www/mgvacanze.com/public_html/wp-content/uploads/2025/11/demo-redux-import-file_0-2025-11-06__15-54-49.json 
+
+
+------
+New AJAX call!
+
+
+------
+New AJAX call!
+
+
+---Importing widgets---
+Primary Widget Area : 
+
+Blocco - No Title - Imported
+Blocco - No Title - Imported
+Wp Estate: Advanced Search - Advanced Search - Imported
+Wp Estate: Login &amp; Register - No Title - Imported
+
+Secondary Widget Area : 
+
+Wp Estate: Advanced Search - Advanced Search - Imported
+Wp Estate: Login &amp; Register - No Title - Imported
+
+First Footer Widget Area : 
+
+Testo - ABOUT WP RENTALS - Imported
+Wp Estate: Multiple currency widget - Change Currency - Imported
+
+Second Footer Widget Area : 
+
+Articoli recenti - Latest News - Imported
+
+Third Footer Widget Area : 
+
+Wp Estate: Contact - Contact - Imported
+Wp Estate: Social Links - Social Links: - Imported
+
+Top Bar Left Widget Area : 
+
+Wp Estate: Multiple currency widget - Change Currency - Imported
+
+Top Bar Right Widget Area : 
+
+Blocco - No Title - Widget already exists
+Blocco - No Title - Widget already exists
+Wp Estate: Social Links - Social Links: - Imported
+
+Owner Page : 
+
+Wp Estate: Advanced Search - Advanced Search - Imported
+
+
+
+---Importing Redux settings---
+Redux settings import for: wprentals_admin finished successfully!
+
+---ocdi/after_import---
+

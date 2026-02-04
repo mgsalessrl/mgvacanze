@@ -1,0 +1,118 @@
+import PropertyCard from '../components/PropertyCard';
+import { supabase } from '../lib/supabase';
+import { Property } from '../lib/types';
+
+// Revalidate every hour
+export const revalidate = 3600;
+
+async function getProperties() {
+  const { data, error } = await supabase
+    .from('properties')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('Error fetching properties:', error);
+    return [];
+  }
+
+  return data.map((p: any) => ({
+    id: p.id,
+    title: p.title,
+    description: p.description,
+    price: p.price,
+    location: {
+      city: p.city,
+      address: p.address,
+      lat: p.lat,
+      lng: p.lng,
+    },
+    specs: {
+      bedrooms: p.bedrooms,
+      bathrooms: p.bathrooms,
+      guests: p.guests,
+      area: p.area,
+    },
+    image: p.image_url,
+  })) as Property[];
+}
+
+export default async function Home() {
+  const properties = await getProperties();
+  const featuredProperties = properties.slice(0, 3); // Show only first 3
+
+  return (
+    <div className="font-sans">
+      {/* Hero Section */}
+      <section className="relative h-[600px] flex items-center justify-center text-center text-white bg-gray-900">
+        {/* Background Image Overlay */}
+        <div className="absolute inset-0 z-0 opacity-50">
+             {/* Ideally a high quality image here. Using a gradient for now if no static asset available */}
+             <div className="w-full h-full bg-gradient-to-r from-blue-900 to-purple-900"></div>
+        </div>
+        
+        <div className="relative z-10 max-w-4xl mx-auto px-4">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                Discover the Freedom of <span className="text-primary">Luxury Yachting</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-200 mb-10 max-w-2xl mx-auto">
+                Explore the Mediterranean's hidden gems aboard our exclusive fleet of catamarans and sailboats.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="/fleet" className="bg-primary hover:bg-primary/90 text-white font-bold py-4 px-8 rounded-full text-lg transition-all shadow-lg hover:shadow-primary/50">
+                    Browse Fleet
+                </a>
+                <a href="/contact" className="bg-white hover:bg-gray-100 text-gray-900 font-bold py-4 px-8 rounded-full text-lg transition-all">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+      </section>
+
+      {/* Featured Fleet */}
+      <section className="py-20 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">Featured Yachts</h2>
+                <div className="w-20 h-1 bg-primary mx-auto"></div>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {featuredProperties.map((property) => (
+                    <PropertyCard key={property.id} property={property} />
+                ))}
+            </div>
+            
+            <div className="text-center mt-12">
+                <a href="/fleet" className="inline-flex items-center text-primary font-bold hover:underline">
+                    View All Yachts &rarr;
+                </a>
+            </div>
+          </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                <div className="p-6">
+                    <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">⚓</div>
+                    <h3 className="text-xl font-bold mb-3">Premium Fleet</h3>
+                    <p className="text-gray-600">Meticulously maintained catamarans and sailboats equipped with modern amenities.</p>
+                </div>
+                <div className="p-6">
+                    <div className="w-16 h-16 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">✨</div>
+                    <h3 className="text-xl font-bold mb-3">Tailored Experience</h3>
+                    <p className="text-gray-600">From skippers to onboard hostesses, we customize every detail of your journey.</p>
+                </div>
+                <div className="p-6">
+                    <div className="w-16 h-16 bg-green-50 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">🛡️</div>
+                    <h3 className="text-xl font-bold mb-3">Best Price Guarantee</h3>
+                    <p className="text-gray-600">Direct booking with no hidden fees and transparent pricing calculation.</p>
+                </div>
+             </div>
+        </div>
+      </section>
+    </div>
+  );
+}

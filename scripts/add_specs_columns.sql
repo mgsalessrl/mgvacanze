@@ -1,0 +1,3 @@
+ALTER TABLE properties 
+ADD COLUMN IF NOT EXISTS specs JSONB DEFAULT '{}'::jsonb,
+ADD COLUMN IF NOT EXISTS features JSONB DEFAULT '[]'::jsonb;

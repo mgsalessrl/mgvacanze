@@ -1,0 +1,55 @@
+
+---Upload files---
+Content file was not uploaded. Error: No file provided.
+
+---Upload files---
+Customizer file was not uploaded. Error: No file provided.
+
+---Upload files---
+Redux file was not uploaded. Error: No file provided.
+
+---Upload files---
+The import files were successfully uploaded!
+Initial max execution time = 120
+Files info:
+Site URL = https://mgvacanze.com
+Data file = not defined!
+Widget file = /home/customer/www/mgvacanze.com/public_html/wp-content/uploads/2025/11/Solo2_Home.json
+Customizer file = not defined!
+Redux files:
+not defined!
+
+---Importing widgets---
+content : Sidebar does not exist in theme (moving widget to Inactive)
+
+0 - No Title - Site does not support widget
+1 - No Title - Site does not support widget
+2 - No Title - Site does not support widget
+3 - No Title - Site does not support widget
+4 - No Title - Site does not support widget
+5 - No Title - Site does not support widget
+6 - No Title - Site does not support widget
+7 - No Title - Site does not support widget
+8 - No Title - Site does not support widget
+9 - No Title - Site does not support widget
+10 - No Title - Site does not support widget
+11 - No Title - Site does not support widget
+12 - No Title - Site does not support widget
+13 - No Title - Site does not support widget
+
+page_settings : Sidebar does not exist in theme (moving widget to Inactive)
+
+
+version : Sidebar does not exist in theme (moving widget to Inactive)
+
+
+title : Sidebar does not exist in theme (moving widget to Inactive)
+
+
+type : Sidebar does not exist in theme (moving widget to Inactive)
+
+
+
+
+---ocdi/after_import---
+

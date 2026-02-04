@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="//mgvacanze.com/main-sitemap.xsl"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+	<url>
+		<loc>https://mgvacanze.com/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://mgvacanze.com/en/homepage-2/" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://mgvacanze.com/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://mgvacanze.com/" />
+		<lastmod>2026-01-16T14:39:00+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://mgvacanze.com/servizi/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://mgvacanze.com/en/services/" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://mgvacanze.com/servizi/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://mgvacanze.com/servizi/" />
+		<lastmod>2026-01-16T16:51:39+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://mgvacanze.com/en/services/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://mgvacanze.com/en/services/" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://mgvacanze.com/servizi/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://mgvacanze.com/servizi/" />
+		<lastmod>2026-01-16T16:27:13+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://mgvacanze.com/en/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://mgvacanze.com/en/homepage-2/" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://mgvacanze.com/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://mgvacanze.com/" />
+		<lastmod>2026-01-16T14:40:48+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://mgvacanze.com/easter-request/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://mgvacanze.com/en/easter-elyvian-mg-vacanze/" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://mgvacanze.com/easter-request/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://mgvacanze.com/easter-request/" />
+		<lastmod>2026-01-16T14:32:10+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://mgvacanze.com/en/easter-elyvian-mg-vacanze/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://mgvacanze.com/en/easter-elyvian-mg-vacanze/" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://mgvacanze.com/easter-request/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://mgvacanze.com/easter-request/" />
+		<lastmod>2026-01-15T07:57:33+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://mgvacanze.com/en/homepage/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://mgvacanze.com/en/homepage/" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://mgvacanze.com/homepage/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://mgvacanze.com/homepage/" />
+		<lastmod>2026-01-12T09:47:08+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://mgvacanze.com/contattaci/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://mgvacanze.com/en/contact-us/" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://mgvacanze.com/contattaci/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://mgvacanze.com/contattaci/" />
+		<lastmod>2026-01-12T09:08:35+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://mgvacanze.com/en/contact-us/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://mgvacanze.com/en/contact-us/" />
+		<xhtml:link rel="alternate" hreflang="it" href="https://mgvacanze.com/contattaci/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://mgvacanze.com/contattaci/" />
+		<lastmod>2025-12-23T14:12:32+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://mgvacanze.com/en/my-account/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://mgvacanze.com/en/my-account/" />
+		<lastmod>2025-12-16T09:27:05+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://mgvacanze.com/en/checkout/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://mgvacanze.com/en/checkout/" />
+		<lastmod>2025-12-16T09:27:04+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://mgvacanze.com/en/cart/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://mgvacanze.com/en/cart/" />
+		<lastmod>2025-12-16T09:27:03+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://mgvacanze.com/en/shop/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://mgvacanze.com/en/shop/" />
+		<lastmod>2025-12-16T09:27:00+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://mgvacanze.com/informativa-sulla-privacy/</loc>
+		<xhtml:link rel="alternate" hreflang="it" href="https://mgvacanze.com/informativa-sulla-privacy/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://mgvacanze.com/informativa-sulla-privacy/" />
+		<lastmod>2025-12-10T16:29:35+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://mgvacanze.com/noleggio-a-taranto/</loc>
+		<xhtml:link rel="alternate" hreflang="it" href="https://mgvacanze.com/noleggio-a-taranto/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://mgvacanze.com/noleggio-a-taranto/" />
+		<lastmod>2025-12-02T14:40:06+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://mgvacanze.com/checkout-9/</loc>
+		<xhtml:link rel="alternate" hreflang="it" href="https://mgvacanze.com/checkout-9/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://mgvacanze.com/checkout-9/" />
+		<lastmod>2025-11-20T11:28:47+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://mgvacanze.com/checkout-8/</loc>
+		<xhtml:link rel="alternate" hreflang="it" href="https://mgvacanze.com/checkout-8/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://mgvacanze.com/checkout-8/" />
+		<lastmod>2025-11-20T11:28:47+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://mgvacanze.com/checkout-7/</loc>
+		<xhtml:link rel="alternate" hreflang="it" href="https://mgvacanze.com/checkout-7/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://mgvacanze.com/checkout-7/" />
+		<lastmod>2025-11-20T11:28:47+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://mgvacanze.com/en/my-reservations/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://mgvacanze.com/en/my-reservations/" />
+		<lastmod>2025-11-06T15:40:30+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://mgvacanze.com/en/preferiti/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://mgvacanze.com/en/preferiti/" />
+		<lastmod>2025-11-06T15:40:25+00:00</lastmod>
+	</url>
+</urlset>
