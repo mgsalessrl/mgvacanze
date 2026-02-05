@@ -8,9 +8,14 @@ export const dynamic = 'force-dynamic'
 export async function GET(request: Request) {
   const requestUrl = new URL(request.url)
   const code = requestUrl.searchParams.get('code')
-  const next = requestUrl.searchParams.get('next') ?? '/account'
+  let next = requestUrl.searchParams.get('next') ?? '/account'
   const token_hash = requestUrl.searchParams.get('token_hash')
   const type = requestUrl.searchParams.get('type') as EmailOtpType | null
+  
+  // Se è un recupero password, forziamo il redirect alla pagina di reset
+  if (type === 'recovery') {
+    next = '/account/reset-password'
+  }
   
   // Clean URL for redirect (remove sensitive params)
   const redirectUrl = new URL(requestUrl.origin + next)

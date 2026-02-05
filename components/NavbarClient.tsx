@@ -129,6 +129,23 @@ export default function NavbarClient({ user, role = 'user' }: NavbarClientProps)
                 <Link href="/servizi" className="text-white hover:text-brand-gold font-display text-2xl uppercase" onClick={() => setIsMobileMenuOpen(false)}>Servizi</Link>
                 <Link href="/contact" className="text-white hover:text-brand-gold font-display text-2xl uppercase" onClick={() => setIsMobileMenuOpen(false)}>Contattaci</Link>
                 
+                {/* Mobile Language Selector */}
+                <div className="flex items-center justify-center gap-6 py-2">
+                    <button 
+                        onClick={() => { setLanguage('it'); setIsMobileMenuOpen(false); }}
+                        className={`text-2xl font-display uppercase transition-colors ${language === 'it' ? 'text-brand-gold font-bold' : 'text-white'}`}
+                    >
+                        IT
+                    </button>
+                    <span className="text-white/30 text-2xl">|</span>
+                    <button 
+                        onClick={() => { setLanguage('en'); setIsMobileMenuOpen(false); }}
+                        className={`text-2xl font-display uppercase transition-colors ${language === 'en' ? 'text-brand-gold font-bold' : 'text-white'}`}
+                    >
+                        EN
+                    </button>
+                </div>
+
                 <div className="h-px bg-white/10 w-full my-4"></div>
 
                 {user ? (
