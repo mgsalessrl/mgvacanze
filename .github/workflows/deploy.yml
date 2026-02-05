@@ -18,7 +18,7 @@ jobs:
         with:
           host: 46.17.175.251
           username: u211042360
-          password: ${{ secrets.SSH_PASSWORD }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 65002
           script: |
             export PATH=/opt/alt/alt-nodejs20/root/usr/bin:$PATH
