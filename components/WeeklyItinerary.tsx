@@ -85,7 +85,7 @@ export function WeeklyItinerary() {
                             </span>
                         </button>
                         
-                        <div className={`px-6 overflow-hidden transition-all duration-300 ${activeItinerary === it.id ? 'max-h-48 pb-6 opacity-100' : 'max-h-0 opacity-0'}`}>
+                        <div className={`px-6 overflow-hidden transition-all duration-300 ${activeItinerary === it.id ? 'max-h-[800px] pb-6 opacity-100' : 'max-h-0 opacity-0'}`}>
                             <div className="pl-14">
                                 <p className="text-gray-600 mb-2 font-medium border-l-2 border-brand-gold/30 pl-3">
                                     {it.route}
