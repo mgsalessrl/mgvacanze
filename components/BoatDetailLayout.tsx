@@ -98,6 +98,27 @@ export default function BoatDetailLayout({ data }: { data: BoatData }) {
         </div>
       </div>
 
+      {/* Quick Stats Card */}
+      <div className="container mx-auto px-4 -mt-6 mb-6 relative z-10">
+        <div className="bg-white rounded-xl shadow-md p-6 inline-flex gap-10 flex-wrap">
+            <div className="flex flex-col items-center">
+                <Users className="w-6 h-6 text-brand-gold mb-1" />
+                <span className="text-lg font-bold text-brand-dark">{data.guests}</span>
+                <span className="text-sm text-gray-500">{t('boat.guests')}</span>
+            </div>
+            <div className="flex flex-col items-center">
+                <Bed className="w-6 h-6 text-brand-gold mb-1" />
+                <span className="text-lg font-bold text-brand-dark">{data.cabins}</span>
+                <span className="text-sm text-gray-500">{t('boat.cabins')}</span>
+            </div>
+            <div className="flex flex-col items-center">
+                <Bath className="w-6 h-6 text-brand-gold mb-1" />
+                <span className="text-lg font-bold text-brand-dark">{data.bathrooms}</span>
+                <span className="text-sm text-gray-500">{t('boat.bathrooms')}</span>
+            </div>
+        </div>
+      </div>
+
       <div className="container mx-auto px-4 py-12 grid grid-cols-1 lg:grid-cols-3 gap-12">
         
         {/* Main Content */}

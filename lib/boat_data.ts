@@ -115,10 +115,23 @@ export const boatData = {
                 { day: "Tuesday", title: "Leuca → Taranto", description: "Return with morning navigation, disembarkation in the afternoon." }
             ]
         },
-        imagesPath: "/images/img_sito/psqua dream",
+        imagesPath: "/images/img_sito/pasqua-dream",
         images: [
-           "1316-excess14-0604-min-scaled.jpg", "1589-excess-14-1014-min-scaled.jpg", "174-excess-14-0485-min-scaled.jpg",
-           "1799-excess-14-0946-min-scaled.jpg", "3454-excess-14-0514_1-scaled.jpg", "521-410-films-excess-14-catamaran-photography-2023-0825-min-scaled.jpg"
+            "1304-excess-14-0878-min-scaled.jpg",
+            "1050-excess-14-4-cabin-version.png",
+            "1316-excess14-0604-min-scaled.jpg",
+            "1621-410-films-excess-14-catamaran-photography-2023-07620-min-scaled.jpg",
+            "2883-excess-14-1155-scaled.jpg",
+            "3752-excess-14-5801-scaled.jpg",
+            "3956-excess-14-0371-scaled.jpg",
+            "4503-excess-14-0294-scaled.jpg",
+            "5156-excess-14-0269-scaled.jpg",
+            "5974-excess-14-0309-scaled.jpg",
+            "6258-excess-14-1030.jpg",
+            "702-excess-14-0392-min-scaled.jpg",
+            "7280-410-films-excess-14-catamaran-photography-2023-06915.jpg",
+            "8994-410-films-excess-14-catamaran-photography-2023-0757.jpg",
+            "9338-excess14-0636.jpg"
         ]
     },
     'pasqua-spirit': {
@@ -199,10 +212,23 @@ export const boatData = {
                 { day: "Monday (Morning)", title: "Arrival in Leuca and disembarkation", description: "-" }
             ]
         },
-         imagesPath: "/images/img_sito/pasqua spirit",
+         imagesPath: "/images/img_sito/pasqua-spirit",
          images: [
-            "1070-excess11-int-ncz7428-hdr-a3-scaled.jpg", "1399-excess11-int-ncz7463-hdr-a3-scaled.jpg",
-            "1444-excess1100593-hr-1-scaled.jpg", "1603-excess11-int-ncz7608-hdr-panorama-a3-scaled.jpg", "2121-ncz9270-hdr-fullhd-scaled.jpg"
+            "8417-excess1100119-hr-scaled.jpg",
+            "1070-excess11-int-ncz7428-hdr-a3-scaled.jpg",
+            "1399-excess11-int-ncz7463-hdr-a3-scaled.jpg",
+            "1444-excess1100593-hr-1-scaled.jpg",
+            "1603-excess11-int-ncz7608-hdr-panorama-a3-scaled.jpg",
+            "2121-ncz9270-hdr-fullhd-scaled.jpg",
+            "3107-excess11-int-nck4013-a3-scaled.jpg",
+            "374-excess11-int-ncz7528-hdr-a3-scaled.jpg",
+            "4051-excess11-int-ncz7503-hdr-a3-scaled.jpg",
+            "4191-excess11-int-ncz7378-hdr-a3-scaled.jpg",
+            "49-excess11-int-ncz7753-a3-scaled.jpg",
+            "6192-excess11-int-ncz7393-hdr-a3-scaled.jpg",
+            "6200-ncz9250-hdr-panorama-fullhd-scaled.jpg",
+            "6427-excess1100038-hr-scaled.jpg",
+            "6785-excess1100592-hr-scaled.jpg"
          ]
     },
     'elyvian-dream': {
@@ -278,26 +304,23 @@ export const boatData = {
             </div>
             </div>
         `,
-        imagesPath: "/images/img_sito/dream lungo",
+        imagesPath: "/images/img_sito/dream-settimanale",
         images: [
-            "1152-excess-14-1984-min-scaled.jpg",
-            "1204-excess-14-0178-min-scaled.jpg",
             "1304-excess-14-0878-min-scaled.jpg",
+            "1050-excess-14-4-cabin-version.png",
             "1316-excess14-0604-min-scaled.jpg",
-            "1391-excess-14-0762-min-scaled.jpg",
-            "1589-excess-14-1014-min-scaled.jpg",
             "1621-410-films-excess-14-catamaran-photography-2023-07620-min-scaled.jpg",
-            "174-excess-14-0485-min-scaled.jpg",
-            "1799-excess-14-0946-min-scaled.jpg",
-            "1901-excess14-0689-min-scaled.jpg",
             "2883-excess-14-1155-scaled.jpg",
             "3752-excess-14-5801-scaled.jpg",
             "3956-excess-14-0371-scaled.jpg",
             "4503-excess-14-0294-scaled.jpg",
             "5156-excess-14-0269-scaled.jpg",
-            "521-410-films-excess-14-catamaran-photography-2023-0825-min-scaled.jpg",
             "5974-excess-14-0309-scaled.jpg",
-            "702-excess-14-0392-min-scaled.jpg"
+            "6258-excess-14-1030.jpg",
+            "702-excess-14-0392-min-scaled.jpg",
+            "7280-410-films-excess-14-catamaran-photography-2023-06915.jpg",
+            "8994-410-films-excess-14-catamaran-photography-2023-0757.jpg",
+            "9338-excess14-0636.jpg"
         ]
     },
     'elyvian-spirit': {
@@ -378,9 +401,13 @@ export const boatData = {
                 </div>
             </div>
          `,
-         imagesPath: "/images/img_sito/spirit lungo",
+         imagesPath: "/images/img_sito/spirit-settimanale",
          images: [
+            "8417-excess1100119-hr-scaled.jpg",
+            "1070-excess11-int-ncz7428-hdr-a3.jpg",
             "1110-excess11-int-ncz7571-hdr-panorama-a3-1-scaled.jpg",
+            "1399-excess11-int-ncz7463-hdr-a3.jpg",
+            "1444-excess1100593-hr (1).jpg",
             "1603-excess11-int-ncz7608-hdr-panorama-a3-1-scaled.jpg",
             "1954-excess11-int-ncz7458-hdr-a3-1-scaled.jpg",
             "3107-excess11-int-nck4013-a3-scaled.jpg",
@@ -388,8 +415,6 @@ export const boatData = {
             "3535-excess11-int-ncz7795-a3-1-scaled.jpg",
             "374-excess11-int-ncz7528-hdr-a3-1-scaled.jpg",
             "4051-excess11-int-ncz7503-hdr-a3-1-scaled.jpg",
-            "4191-excess11-int-ncz7378-hdr-a3-1-scaled.jpg",
-            "4191-excess11-int-ncz7378-hdr-a3-scaled.jpg",
             "49-excess11-int-ncz7753-a3-scaled.jpg",
             "5107-excess11-int-ncz7484-hdr-panorama-a3-scaled.jpg",
             "5903-excess1100295-hr-scaled.jpg",
@@ -401,7 +426,7 @@ export const boatData = {
             "7262-excess1100554-hr-scaled.jpg",
             "7302-excess11-int-nck3997-a3-scaled.jpg",
             "8304-excess11-int-ncz7763-hdr-a3-scaled.jpg",
-            "8417-excess1100119-hr-scaled.jpg",
+            "938-excess1100618-hr.jpg",
             "9884-excess11-int-ncz7398-hdr-a3-scaled.jpg"
          ]
     },
@@ -415,9 +440,9 @@ export const boatData = {
         guests: 8,
         maxGuests: 8,
         hasPremiumPackage: true,
-        cabins: 4,
+        cabins: 3,
         securityDeposit: 5000,
-        bathrooms: 4,
+        bathrooms: 3,
         description: `
         <p class="mb-4">Elyvian Breeze è uno yacht a vela di oltre 18 metri che incarna un’eleganza senza tempo. Pensato per chi desidera un’esperienza esclusiva immersa nel silenzio del mare, offre un rifugio raffinato dove linee pure, armonia e materiali di pregio definiscono un lusso autentico.</p>
         <p class="mb-4">Salire a bordo significa entrare in una dimensione riservata: design essenziale, volumi equilibrati e interni luminosi, progettati per unire comfort e privacy. Le 3 cabine con bagno en suite interpretano al meglio l’ospitalità contemporanea grazie ad arredi ricercati e dettagli curati.</p>
@@ -483,15 +508,15 @@ export const boatData = {
             </div>
             </div>
         `,
-        imagesPath: "/images/img_sito/breeze lungo",
+        imagesPath: "/images/img_sito/breeze-settimanale",
         images: [
-            "1d305ebe60962d14e94c7b74751d45fb.jpg",
-            "53124270a7c3417f9d398ed9d2ddf53d-683x1024-2.jpg",
             "70b02661b3bae04f76d04ace29f54945.jpg",
+            "ca8ec5b499f96a206635c0c7a9e22e92-1 (1).jpg",
+            "53124270a7c3417f9d398ed9d2ddf53d-683x1024-2.jpg",
             "7737f0c247ad822852eebe9e9793bbe7-1-1 (1).jpg",
             "bea739636f38f9a7a2916e1036000eca (1).jpg",
-            "ca8ec5b499f96a206635c0c7a9e22e92-1 (1).jpg",
             "da4d60161bcc80a5fc84af488bd3491b.jpg",
+            "WhatsApp Image 2026-02-06 at 15.29.30 (3).jpeg",
             "WhatsApp-Image-2025-06-18-at-08.39.5215 (1).jpeg",
             "WhatsApp-Image-2025-06-18-at-08.39.5216.jpeg",
             "WhatsApp-Image-2025-06-18-at-08.39.523 (1).jpeg",
@@ -578,22 +603,18 @@ export const boatData = {
             <p class="mb-2"><strong>*APA</strong>: Food expenses – Galley, Fuel, Mooring fees.</p>
             <p><strong>**SECURITY DEPOSIT</strong>: Security deposit.</p>
         `,
-        imagesPath: "/images/img_sito/breeze lungo",
+        imagesPath: "/images/img_sito/pasqua-breeze",
         images: [
             "70b02661b3bae04f76d04ace29f54945.jpg",
-            "ca8ec5b499f96a206635c0c7a9e22e92-1 (1).jpg",
-            "bea739636f38f9a7a2916e1036000eca (1).jpg",
-            "1d305ebe60962d14e94c7b74751d45fb.jpg",
             "53124270a7c3417f9d398ed9d2ddf53d-683x1024-2.jpg",
-            "7737f0c247ad822852eebe9e9793bbe7-1-1 (1).jpg",
-            "da4d60161bcc80a5fc84af488bd3491b.jpg",
-            "WhatsApp-Image-2025-06-18-at-08.39.5215 (1).jpeg",
+            "bea739636f38f9a7a2916e1036000eca-1.jpg",
+            "frontale-barca.png",
+            "tavolo-barca.png",
+            "WhatsApp-Image-2025-06-18-at-08.39.5214.jpeg",
             "WhatsApp-Image-2025-06-18-at-08.39.5216.jpeg",
-            "WhatsApp-Image-2025-06-18-at-08.39.523 (1).jpeg",
-            "WhatsApp-Image-2025-06-18-at-09.39.55.jpeg",
+            "WhatsApp-Image-2025-06-18-at-09.39.551.jpeg",
             "WhatsApp-Image-2025-06-18-at-09.39.5510.jpeg",
-            "WhatsApp-Image-2025-06-18-at-09.39.552.jpeg",
-            "WhatsApp-Image-2025-06-18-at-09.39.555.jpeg"
+            "WhatsApp-Image-2025-06-18-at-09.39.556.jpeg"
         ]
     }
 };
