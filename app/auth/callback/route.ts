@@ -48,6 +48,15 @@ export async function GET(request: Request) {
     const { error } = await supabase.auth.exchangeCodeForSession(code)
     if (error) {
       console.error('Auth callback exchange error:', error.message)
+      // PKCE verifier missing = user opened link on different browser/device
+      // The email IS already confirmed by Supabase, so redirect to /auth/confirm
+      // for a client-side fallback attempt, or to login with a helpful message
+      if (error.message?.includes('code verifier') || error.message?.includes('PKCE')) {
+        const confirmUrl = new URL(requestUrl.origin + '/auth/confirm')
+        confirmUrl.searchParams.set('code', code)
+        confirmUrl.searchParams.set('next', next)
+        return NextResponse.redirect(confirmUrl)
+      }
       errorUrl.searchParams.set('error', 'confirmation_failed')
       errorUrl.searchParams.set('error_description', error.message)
       return NextResponse.redirect(errorUrl)

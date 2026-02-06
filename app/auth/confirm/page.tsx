@@ -74,8 +74,8 @@ function AuthConfirmContent() {
                     // Se abbiamo "code", è probabile che Supabase ci abbia rediretto qui consumando il token_hash.
                     // NON C'È MOLTO CHE POSSIAMO FARE QUI se non chiedere all'utente di richiedere un nuovo link 
                     // MA possiamo provare a catturare l'errore specifico.
-                    if (error.name === 'AuthPKCECodeVerifierMissingError') {
-                         setError('Sessione scaduta o dispositivo diverso. Richiedi un nuovo link di reset password.')
+                    if (error.name === 'AuthPKCECodeVerifierMissingError' || error.message?.includes('code verifier')) {
+                         setError('Il tuo account è stato confermato! Puoi accedere con email e password dalla pagina di login.')
                     } else {
                          setError(error.message)
                     }
@@ -98,13 +98,15 @@ function AuthConfirmContent() {
         return (
             <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-4">
                 <div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full text-center">
-                    <h2 className="text-red-600 font-bold mb-4 text-xl">Errore di Autenticazione</h2>
+                    <h2 className={`font-bold mb-4 text-xl ${error.includes('confermato') ? 'text-green-600' : 'text-red-600'}`}>
+                        {error.includes('confermato') ? 'Account Confermato!' : 'Errore di Autenticazione'}
+                    </h2>
                     <p className="text-gray-700 mb-6">{error}</p>
                     <button 
                         onClick={() => router.push('/login')}
                         className="bg-brand-dark text-white px-4 py-2 rounded hover:bg-black transition-colors"
                     >
-                        Torna al Login
+                        {error.includes('confermato') ? 'Vai al Login' : 'Torna al Login'}
                     </button>
                 </div>
             </div>
