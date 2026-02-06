@@ -9,16 +9,9 @@ export const dynamic = 'force-dynamic';
 
 export default async function Page() {
   const supabase = await createClient();
-  const { data: globalExtras } = await supabase.from('extras').select('*').order('price', { ascending: false });
+  const { data: globalExtras } = await supabase.from('extras').select('*').eq('is_visible', true).order('name');
 
-  const extraOptions = (globalExtras || []).map((e: any) => {
-      let name = e.name;
-      let price = Number(e.price);
-      if (name.toLowerCase().includes('skipper')) { price = 1750; name = "Skipper (Obbligatorio)"; }
-      if (name.toLowerCase().includes('pulizia')) { price = 250; }
-      if (name.toLowerCase().includes('tender')) { price = 150; }
-      return { name, price, type: 0 };
-  });
+  const extraOptions = (globalExtras || []);
 
   const data = {
     ...boatData['pasqua-dream'],

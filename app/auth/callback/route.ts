@@ -17,37 +17,64 @@ export async function GET(request: Request) {
     next = '/account/reset-password'
   }
   
-  // Clean URL for redirect (remove sensitive params)
   const redirectUrl = new URL(requestUrl.origin + next)
-  
-  // Ensure we don't carry over auth params
-  // Note: searchParams is an iterator, so we can't delete while iterating easily if we want to be safe, 
-  // but creating a new URL ensures we start clean if we only append what we want. 
-  // Actually, 'next' might have query params? 
-  // Usually 'next' is just a path. If it has params, we usually append them.
-  // Let's stick to the simpler redirectUrl construction:
-  // We utilize the 'next' parameter as the path.
-  
   const errorUrl = new URL(requestUrl.origin + '/login')
 
-  // MODIFICA RADICALE CLIENT-SIDE FIX:
-  // Invece di scambiare il token qui (che fallisce coi cookie in redirect),
-  // passiamo la palla a una pagina client-side che farà il lavoro sporco.
-  
-  const confirmUrl = new URL(requestUrl.origin + '/auth/confirm')
-  
-  if (code) confirmUrl.searchParams.set('code', code)
-  if (next) confirmUrl.searchParams.set('next', next)
-  if (token_hash) confirmUrl.searchParams.set('token_hash', token_hash)
-  if (type) confirmUrl.searchParams.set('type', type)
-  if (requestUrl.searchParams.get('error_description')) {
-      confirmUrl.searchParams.set('error_description', requestUrl.searchParams.get('error_description')!)
+  // Create SSR Supabase client with cookies for server-side auth exchange
+  const cookieStore = await cookies()
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        getAll() {
+          return cookieStore.getAll()
+        },
+        setAll(cookiesToSet) {
+          try {
+            cookiesToSet.forEach(({ name, value, options }) =>
+              cookieStore.set(name, value, options)
+            )
+          } catch {
+            // setAll called from Server Component — safe to ignore with middleware
+          }
+        },
+      },
+    }
+  )
+
+  // PRIORITY 1: Exchange auth code server-side (signup confirmation, magic link)
+  if (code) {
+    const { error } = await supabase.auth.exchangeCodeForSession(code)
+    if (error) {
+      console.error('Auth callback exchange error:', error.message)
+      errorUrl.searchParams.set('error', 'confirmation_failed')
+      errorUrl.searchParams.set('error_description', error.message)
+      return NextResponse.redirect(errorUrl)
+    }
+    return NextResponse.redirect(redirectUrl)
   }
 
-  return NextResponse.redirect(confirmUrl)
+  // PRIORITY 2: Verify OTP token_hash (recovery flow)
+  if (token_hash && type) {
+    const { error } = await supabase.auth.verifyOtp({ token_hash, type })
+    if (error) {
+      console.error('Auth callback OTP error:', error.message)
+      errorUrl.searchParams.set('error', 'confirmation_failed')
+      errorUrl.searchParams.set('error_description', error.message)
+      return NextResponse.redirect(errorUrl)
+    }
+    return NextResponse.redirect(redirectUrl)
+  }
 
-  /* CODICE PRECEDENTE DISABILITATO PER DEBUG COOKIE LOCALHOST
-  const cookieStore = await cookies()
-  ...
-  */
+  // FALLBACK: If there's an error_description in the URL, redirect to /auth/confirm for display
+  if (requestUrl.searchParams.get('error_description')) {
+    const confirmUrl = new URL(requestUrl.origin + '/auth/confirm')
+    confirmUrl.searchParams.set('error_description', requestUrl.searchParams.get('error_description')!)
+    return NextResponse.redirect(confirmUrl)
+  }
+
+  // No code or token_hash — redirect to login
+  errorUrl.searchParams.set('error', 'missing_auth_params')
+  return NextResponse.redirect(errorUrl)
 }

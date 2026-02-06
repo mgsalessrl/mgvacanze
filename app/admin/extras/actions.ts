@@ -24,7 +24,10 @@ export async function upsertExtra(formData: FormData) {
 
   const id = formData.get('id') as string
   const name = formData.get('name') as string
+  const description = (formData.get('description') as string) || null
   const price = parseFloat(formData.get('price') as string)
+  const price_2w_raw = formData.get('price_2w') as string
+  const price_2w = price_2w_raw && price_2w_raw.trim() !== '' ? parseFloat(price_2w_raw) : null
   const type = formData.get('type') as string
   const limit_rule = formData.get('limit_rule') as string
   const max_quantity = parseInt(formData.get('max_quantity') as string)
@@ -39,10 +42,12 @@ export async function upsertExtra(formData: FormData) {
     throw new Error('Missing required fields')
   }
 
-  const extra = {
+  const extra: Record<string, any> = {
     id,
     name,
+    description,
     price: isNaN(price) ? 0 : price,
+    price_2w: price_2w !== null && !isNaN(price_2w) ? price_2w : null,
     type,
     limit_rule,
     max_quantity: isNaN(max_quantity) ? 1 : max_quantity,

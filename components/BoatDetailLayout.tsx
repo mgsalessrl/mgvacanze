@@ -46,6 +46,7 @@ interface BoatData {
     heroImagePosition?: string;
     itinerary_en?: ItineraryDocs;
     extraOptions?: any[];
+    discounts?: any[];
     hasPremiumPackage?: boolean;
 }
 
@@ -346,6 +347,8 @@ export default function BoatDetailLayout({ data }: { data: BoatData }) {
                     cabins={data.cabins}
                     hasPremiumPackage={data.hasPremiumPackage}
                     isPackage={data.isEasterOffer}
+                    extraOptions={data.extraOptions}
+                    discounts={data.discounts || []}
                     forcedStartDate={data.packageDates ? parseDate(data.packageDates.start) : undefined}
                     forcedEndDate={data.packageDates ? parseDate(data.packageDates.end) : undefined}
                  />

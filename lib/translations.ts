@@ -98,6 +98,9 @@ export const translations = {
     "boat.privacy": "Accetto la Privacy Policy",
     "boat.send_request": "Invia Richiesta",
     "boat.questions": "Hai domande?",
+    "boat.detail_tab": "Scheda Tecnica",
+    "boat.itinerary_tab": "Itinerari",
+    "boat.services_tab": "Servizi",
     
     // Easter
     "easter.special_price": "Prezzo Speciale Pasqua",
@@ -419,6 +422,9 @@ export const translations = {
     "boat.privacy": "I accept the Privacy Policy",
     "boat.send_request": "Send Request",
     "boat.questions": "Have questions?",
+    "boat.detail_tab": "Specifications",
+    "boat.itinerary_tab": "Itineraries",
+    "boat.services_tab": "Services",
 
     // Easter
     "easter.special_price": "Special Easter Price",

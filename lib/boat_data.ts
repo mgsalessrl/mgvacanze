@@ -1,5 +1,15 @@
 import { ExtraService } from './types';
 
+/**
+ * UNIVERSAL_EXTRAS — DEPRECATED / LEGACY REFERENCE
+ * 
+ * The booking system now loads optional extras dynamically from the Supabase `extras` table
+ * (filtered by is_visible=true). Admin manages extras via /admin/extras dashboard.
+ * 
+ * Mandatory extras (e.g. skipper) are still controlled by boatData[slug].extraOverrides below.
+ * This static array is kept for backward compatibility with pricing_engine and actions.ts.
+ * @deprecated Use DB extras via Supabase query instead.
+ */
 export const UNIVERSAL_EXTRAS: ExtraService[] = [
     { id: 'skipper', label: 'Skipper', price: 1750, type: 'toggle', maxLimitRule: 'fixed', maxQuantity: 1 },
     { id: 'hostess', label: 'Hostess', price: 1100, type: 'toggle', maxLimitRule: 'fixed', maxQuantity: 1 },

@@ -8,7 +8,9 @@ import { ArrowLeft, Save, Trash2, Info } from 'lucide-react'
 type Extra = {
   id: string
   name: string
+  description: string | null
   price: number
+  price_2w: number | null
   type: string
   limit_rule: string
   max_quantity: number
@@ -88,6 +90,20 @@ export default async function ExtraFormPage({ params }: { params: Promise<{ id: 
                 />
             </div>
 
+            {/* Description */}
+            <div className="col-span-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Description
+                </label>
+                <input
+                    type="text"
+                    name="description"
+                    defaultValue={extra?.description || ''}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition hover:border-gray-400"
+                    placeholder="Brief description shown to customers (optional)"
+                />
+            </div>
+
             {/* Price */}
             <div className="col-span-1">
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -104,6 +120,26 @@ export default async function ExtraFormPage({ params }: { params: Promise<{ id: 
                         className="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition hover:border-gray-400"
                     />
                 </div>
+            </div>
+
+            {/* Price 2+ Weeks */}
+            <div className="col-span-1">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Prezzo 2+ Settimane (€)
+                </label>
+                <div className="relative">
+                    <span className="absolute left-4 top-3.5 text-gray-500">€</span>
+                    <input
+                        type="number"
+                        name="price_2w"
+                        defaultValue={extra?.price_2w ?? ''}
+                        step="0.01"
+                        className="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition hover:border-gray-400"
+                    />
+                </div>
+                <p className="text-xs text-gray-500 mt-2">
+                    Prezzo scontato per noleggi di 2+ settimane. Lascia vuoto per usare sempre il prezzo standard.
+                </p>
             </div>
 
             {/* Type */}

@@ -1,6 +1,6 @@
 'use client'
 
-import { useActionState, useState, useEffect } from 'react'
+import { useActionState, useState, useEffect, useMemo } from 'react'
 import { submitBooking, ActionState } from '@/app/actions'
 import { Calendar as CalendarIcon, Users, Mail, Phone, User as UserIcon, CheckCircle, AlertCircle, Info, Lock, Plus, Minus } from 'lucide-react'
 import { DayPicker } from 'react-day-picker'
@@ -10,7 +10,7 @@ import { format } from 'date-fns'
 import Link from 'next/link'
 import { createBrowserClient } from '@supabase/ssr'
 import { useTranslation } from './I18nContext'
-import { UNIVERSAL_EXTRAS, boatData } from '@/lib/boat_data'
+import { boatData } from '@/lib/boat_data'
 
 interface BookingFormProps {
   propertyId: number
@@ -18,7 +18,7 @@ interface BookingFormProps {
   maxGuests: number
   cabins?: number
   hasPremiumPackage?: boolean
-  extraOptions?: any[] // Kept for compatibility but ignored in UI
+  extraOptions?: any[] // DB extras from server (is_visible=true)
   boatSlug?: string 
   forcedStartDate?: Date
   forcedEndDate?: Date
@@ -151,6 +151,42 @@ export function BookingForm({
      })
   }, [])
 
+  // Build normalized extras list from DB data (extraOptions prop)
+  // Memoized to prevent infinite re-render loops in useEffect dependencies
+  const filteredExtras = useMemo(() => {
+    const normalized = (extraOptions || []).map((e: any) => ({
+      id: e.id,
+      label: e.name || e.label,
+      description: e.description || '',
+      price: Number(e.price) || 0,
+      price_2w: e.price_2w != null ? Number(e.price_2w) : null,
+      type: e.type || 'toggle',
+      maxLimitRule: e.limit_rule || e.maxLimitRule || 'fixed',
+      maxQuantity: e.max_quantity || e.maxQuantity || 1,
+      mandatory_for_boats: e.mandatory_for_boats || null,
+      is_visible: e.is_visible !== false,
+    }));
+    // Filter by mandatory_for_boats: show only if null/empty OR includes this boat slug
+    const filtered = normalized.filter((e: any) => {
+      if (!e.mandatory_for_boats || e.mandatory_for_boats.length === 0) return true;
+      return e.mandatory_for_boats.includes(boatSlug);
+    });
+    // Sort: mandatory extras (from extraOverrides) first, then alphabetical
+    const overrides = (boatData[boatSlug as keyof typeof boatData] as any)?.extraOverrides || {};
+    return filtered.sort((a: any, b: any) => {
+      const aMandatory = overrides[a.id]?.mandatory ? 1 : 0;
+      const bMandatory = overrides[b.id]?.mandatory ? 1 : 0;
+      if (aMandatory !== bMandatory) return bMandatory - aMandatory; // mandatory first
+      return (a.label || '').localeCompare(b.label || '');
+    });
+  }, [extraOptions, boatSlug]);
+
+  // Determine if booking is 2+ weeks (for price_2w logic)
+  const bookingDays = (range?.from && range?.to)
+    ? Math.round((range.to.getTime() - range.from.getTime()) / (1000 * 60 * 60 * 24))
+    : 0;
+  const isTwoWeeksOrMore = bookingDays >= 14;
+
   // Calculate total whenever inputs update
   useEffect(() => {
     if (!range?.from || !range?.to) {
@@ -158,14 +194,25 @@ export function BookingForm({
         return
     }
 
+    const overrides = (boatData[boatSlug as keyof typeof boatData] as any)?.extraOverrides || {};
+
     // Convert extrasState to Array of objects for the engine
     const extrasList = Object.entries(extrasState).map(([id, qty]) => {
-        const def = UNIVERSAL_EXTRAS.find(e => e.id === id);
+        const def = filteredExtras.find((e: any) => e.id === id);
         if (!def) return null;
+        const override = overrides[id];
+        let effectivePrice = def.price;
+        if (override?.mandatory && override?.price !== undefined) {
+            // Mandatory override price always wins
+            effectivePrice = override.price;
+        } else if (!isPackage && isTwoWeeksOrMore && def.price_2w != null && def.price_2w > 0) {
+            // 2+ weeks discount on optional extras (not Easter, not mandatory)
+            effectivePrice = def.price_2w;
+        }
         return {
             id: def.id,
             name: def.label,
-            price: def.price,
+            price: effectivePrice,
             quantity: qty
         };
     }).filter(Boolean) as any[];
@@ -174,7 +221,7 @@ export function BookingForm({
     const q = calculateCharterPrice(boatSlug, range.from, range.to, extrasList, isPackage, hasPremiumPackage, discounts)
     setQuote(q)
 
-  }, [range, extrasState, boatSlug, isPackage])
+  }, [range, extrasState, boatSlug, isPackage, filteredExtras, isTwoWeeksOrMore])
 
   // Intercept submit if not logged in
   const handleBookingStart = (e: React.MouseEvent) => {
@@ -396,7 +443,7 @@ export function BookingForm({
         <div>
             <h4 className="font-medium text-gray-900 mb-3">{t('booking.extras')}</h4>
             <div className="space-y-3">
-                {UNIVERSAL_EXTRAS.map((extra) => {
+                {filteredExtras.map((extra: any) => {
                     const overrides = (boatData[boatSlug as keyof typeof boatData] as any)?.extraOverrides || {};
                     let override = overrides[extra.id];
                     // Update display logic to include isPackage check
@@ -404,8 +451,13 @@ export function BookingForm({
                          override = { mandatory: true, price: 0 };
                     }
                     const isMandatory = override?.mandatory || false;
-                    // Handle price: 0 override
-                    const displayPrice = override?.price !== undefined ? override.price : extra.price;
+                    // Handle price: mandatory override wins, then 2w discount for optional, then DB price
+                    let displayPrice = extra.price;
+                    if (override?.price !== undefined) {
+                        displayPrice = override.price;
+                    } else if (!isPackage && isTwoWeeksOrMore && extra.price_2w != null && extra.price_2w > 0) {
+                        displayPrice = extra.price_2w;
+                    }
 
                     return (
                     <div key={extra.id} className={`flex items-center justify-between p-3 rounded-lg border transition-all ${extrasState[extra.id] || isMandatory ? 'border-primary bg-primary/5' : 'border-gray-200 hover:border-primary/50'}`}>
@@ -423,6 +475,9 @@ export function BookingForm({
                                 <span className={`text-sm font-medium ${extrasState[extra.id] || isMandatory ? 'text-primary' : 'text-gray-700'}`}>
                                     {t(`service.name.${extra.id}`) !== `service.name.${extra.id}` ? t(`service.name.${extra.id}`) : extra.label}
                                 </span>
+                                {extra.description && (
+                                    <span className="text-xs text-gray-400">{extra.description}</span>
+                                )}
                                 <span className={`text-xs ${isMandatory && displayPrice === 0 ? 'text-green-600 font-bold' : 'text-gray-500'}`}>
                                     {isMandatory && displayPrice === 0 
                                       ? t('common.included') 
@@ -430,6 +485,9 @@ export function BookingForm({
                                         ? `+€${displayPrice}` 
                                         : t('common.on_request')}
                                     {extra.type === 'counter' && displayPrice > 0 && t('common.per_unit')}
+                                    {!isPackage && isTwoWeeksOrMore && !isMandatory && extra.price_2w != null && extra.price_2w > 0 && (
+                                        <span className="ml-1 text-green-600">({t('booking.2w_price') || '2+ sett.'})</span>
+                                    )}
                                 </span>
                            </div>
                         </div>
@@ -438,7 +496,7 @@ export function BookingForm({
                             <div className="flex items-center gap-2">
                                 <button 
                                     type="button"
-                                    onClick={() => handleUpdateQuantity(extra.id, -1, extra.maxLimitRule, extra.maxQuantity)}
+                                    onClick={() => handleUpdateQuantity(extra.id, -1, extra.maxLimitRule || extra.limit_rule, extra.maxQuantity || extra.max_quantity)}
                                     disabled={!extrasState[extra.id] && !isMandatory}
                                     className="p-1 rounded-full text-gray-400 hover:text-gray-600 hover:bg-gray-100 disabled:opacity-30 transition-colors"
                                 >
@@ -447,8 +505,8 @@ export function BookingForm({
                                 <span className="text-sm font-medium w-4 text-center">{extrasState[extra.id] || 0}</span>
                                 <button 
                                     type="button"
-                                    onClick={() => handleUpdateQuantity(extra.id, 1, extra.maxLimitRule, extra.maxQuantity)}
-                                    disabled={(extrasState[extra.id] || 0) >= getLimit(extra.maxLimitRule, extra.maxQuantity)}
+                                    onClick={() => handleUpdateQuantity(extra.id, 1, extra.maxLimitRule || extra.limit_rule, extra.maxQuantity || extra.max_quantity)}
+                                    disabled={(extrasState[extra.id] || 0) >= getLimit(extra.maxLimitRule || extra.limit_rule, extra.maxQuantity || extra.max_quantity)}
                                     className="p-1 rounded-full text-gray-400 hover:text-gray-600 hover:bg-gray-100 disabled:opacity-30 transition-colors"
                                 >
                                     <Plus className="w-4 h-4" />
