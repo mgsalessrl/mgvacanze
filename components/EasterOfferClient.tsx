@@ -13,7 +13,6 @@ export default function EasterOfferClient({ data, slug }: { data: any, slug: str
   const { t, language } = useTranslation();
 
   const description = language === 'en' ? (data.description_en || data.description) : data.description;
-  const discountText = language === 'en' ? (data.discountText_en || data.discountText) : data.discountText;
 
   return (
     <div className="min-h-screen bg-gray-50 pb-12 font-sans">

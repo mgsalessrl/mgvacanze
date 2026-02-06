@@ -31,47 +31,62 @@ const nextConfig: NextConfig = {
   },
   async rewrites() {
     return [
-      // Flotta (Weekly)
+      // Flotta (Weekly) – point to static pages with BoatDetailLayout
       {
         source: '/noleggio-catamarano/elyvian-spirit',
-        destination: '/boat/elyvian-spirit',
+        destination: '/noleggio/elyvian-spirit',
       },
       {
         source: '/noleggio-catamarano/elyvian-dream',
-        destination: '/boat/elyvian-dream',
+        destination: '/noleggio/elyvian-dream',
       },
       {
         source: '/noleggio-yacht/elyvian-breeze',
-        destination: '/boat/elyvian-breeze',
+        destination: '/noleggio/elyvian-breeze',
       },
 
-      // Pasqua Italia
+      // Pasqua Italia – point to renamed static pages
       {
         source: '/pasqua-elyvian-dream',
-        destination: '/boat/pasqua-dream',
+        destination: '/noleggio/pasqua-elyvian-dream',
       },
       {
         source: '/pasqua-elyvian-spirit',
-        destination: '/boat/pasqua-spirit',
+        destination: '/noleggio/pasqua-elyvian-spirit',
       },
       {
         source: '/pasqua-elyvian-breeze',
-        destination: '/boat/pasqua-breeze',
+        destination: '/noleggio/pasqua-elyvian-breeze',
       },
 
-      // Pasqua Grecia (Pass Variant for Metadata)
+      // Pasqua Grecia – point to renamed static pages
       {
         source: '/pasqua-grecia-elyvian-dream',
-        destination: '/boat/pasqua-dream?variant=grecia',
+        destination: '/noleggio/pasqua-grecia-elyvian-dream',
       },
       {
         source: '/pasqua-grecia-elyvian-spirit',
-        destination: '/boat/pasqua-spirit?variant=grecia',
+        destination: '/noleggio/pasqua-grecia-elyvian-spirit',
       },
       {
         source: '/pasqua-grecia-elyvian-breeze',
-        destination: '/boat/pasqua-breeze?variant=grecia',
+        destination: '/noleggio/pasqua-grecia-elyvian-breeze',
       },
+    ]
+  },
+  async redirects() {
+    return [
+      // Fleet: redirect old /boat/* URLs to SEO canonical URLs
+      { source: '/boat/elyvian-spirit', destination: '/noleggio-catamarano/elyvian-spirit', permanent: true },
+      { source: '/boat/elyvian-dream', destination: '/noleggio-catamarano/elyvian-dream', permanent: true },
+      { source: '/boat/elyvian-breeze', destination: '/noleggio-yacht/elyvian-breeze', permanent: true },
+      // Easter: redirect old directory-based URLs to new SEO URLs
+      { source: '/noleggio/pasqua-dream', destination: '/pasqua-elyvian-dream', permanent: true },
+      { source: '/noleggio/pasqua-dream-grecia', destination: '/pasqua-grecia-elyvian-dream', permanent: true },
+      { source: '/noleggio/pasqua-spirit', destination: '/pasqua-grecia-elyvian-spirit', permanent: true },
+      { source: '/noleggio/pasqua-spirit-italia', destination: '/pasqua-elyvian-spirit', permanent: true },
+      { source: '/noleggio/pasqua-breeze-grecia', destination: '/pasqua-grecia-elyvian-breeze', permanent: true },
+      { source: '/noleggio/pasqua-in-mare-elyvian-breeze', destination: '/pasqua-elyvian-breeze', permanent: true },
     ]
   }
 };

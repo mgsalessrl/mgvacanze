@@ -1,7 +1,10 @@
 import BoatDetailLayout from '@/components/BoatDetailLayout';
 import { boatData } from '@/lib/boat_data';
 import { createClient } from '@/lib/supabase-server';
+import { getSeoMetadata } from '@/lib/seo-config';
+import { Metadata } from 'next';
 
+export const metadata: Metadata = getSeoMetadata('pasqua-elyvian-spirit');
 export const dynamic = 'force-dynamic';
 
 export default async function Page() {

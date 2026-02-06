@@ -157,13 +157,6 @@ export const translations = {
     "contact.privacy_link": "Privacy Policy",
     "contact.send_btn": "Invia Messaggio",
 
-    // Promo Modal
-    "promo.title": "Pasqua in Mare",
-    "promo.subtitle": "Offerta Limitata",
-    "promo.desc": "Prenota entro il 28 Febbraio e ricevi uno <bold>sconto esclusivo del 15%</bold> sulla tua crociera di Pasqua. Vivi la primavera a bordo dei nostri yacht di lusso.",
-    "promo.cta": "Scopri l'offerta",
-    "promo.dismiss": "No, grazie",
-
     // Cookie Banner
     "cookie.privacy_title": "Rispetto della tua privacy:",
     "cookie.privacy_desc": "Utilizziamo cookie e tecnologie simili per migliorare la tua esperienza di navigazione, analizzare il traffico e personalizzare i contenuti.",
@@ -484,13 +477,6 @@ export const translations = {
     "contact.privacy_text": "I have read and accept the",
     "contact.privacy_link": "Privacy Policy",
     "contact.send_btn": "Send Message",
-
-    // Promo Modal
-    "promo.title": "Easter at Sea",
-    "promo.subtitle": "Limited Offer",
-    "promo.desc": "Book by February 28th and receive an <bold>exclusive 15% discount</bold> on your Easter cruise. Experience spring aboard our luxury yachts.",
-    "promo.cta": "Discover the Offer",
-    "promo.dismiss": "No, thanks",
 
     // Cookie Banner
     "cookie.privacy_title": "Respecting your privacy:",

@@ -27,5 +27,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }))
 
-  return [...routes, ...boatRoutes]
+  const easterRoutes = [
+    '/pasqua-elyvian-dream',
+    '/pasqua-elyvian-spirit',
+    '/pasqua-elyvian-breeze',
+    '/pasqua-grecia-elyvian-dream',
+    '/pasqua-grecia-elyvian-spirit',
+    '/pasqua-grecia-elyvian-breeze',
+  ].map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }))
+
+  return [...routes, ...boatRoutes, ...easterRoutes]
 }

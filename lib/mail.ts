@@ -45,9 +45,9 @@ export async function sendEmail({ to, subject, html, attachments }: SendEmailOpt
 
 
 const BANK_DETAILS = {
-  beneficiary: "MGSALES SRL",
-  iban: "IT26T0306971617100000004303",
-  bankName: "Banca Monte dei Paschi di Siena" // Optional, adds credibility
+  beneficiary: "MG Sales SRL",
+  iban: "IT41E0306971617100000007900",
+  bankName: "Intesa San Paolo - Filiale di Sansepolcro"
 };
 
 export async function sendDepositRequestEmail({ 

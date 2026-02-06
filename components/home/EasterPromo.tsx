@@ -16,7 +16,7 @@ export default function EasterPromo() {
             
             {/* Pasqua Dream */}
             <div className="group">
-                <Link href="/noleggio/pasqua-dream">
+                <Link href="/noleggio/pasqua-elyvian-dream">
                     <div className="relative h-64 w-full overflow-hidden mb-4 rounded-lg shadow-md group-hover:shadow-xl transition-all">
                         <Image 
                             src="/images/img_sito/psqua dream/1316-excess14-0604-min-scaled.jpg" // Using an image from the folder
@@ -33,7 +33,7 @@ export default function EasterPromo() {
 
             {/* Pasqua Spirit */}
             <div className="group">
-                <Link href="/noleggio/pasqua-spirit">
+                <Link href="/noleggio/pasqua-grecia-elyvian-spirit">
                     <div className="relative h-64 w-full overflow-hidden mb-4 rounded-lg shadow-md group-hover:shadow-xl transition-all">
                          <Image 
                             src="/images/img_sito/pasqua spirit/1070-excess11-int-ncz7428-hdr-a3-scaled.jpg"
@@ -50,7 +50,7 @@ export default function EasterPromo() {
 
             {/* Pasqua Breeze */}
             <div className="group">
-                <Link href="/noleggio/pasqua-in-mare-elyvian-breeze">
+                <Link href="/noleggio/pasqua-elyvian-breeze">
                     <div className="relative h-64 w-full overflow-hidden mb-4 rounded-lg shadow-md group-hover:shadow-xl transition-all">
                          <Image 
                             src="/images/img_sito/pasqua breeze/53124270a7c3417f9d398ed9d2ddf53d-683x1024-2.jpg"

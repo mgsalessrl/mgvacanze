@@ -36,8 +36,6 @@ export const boatData = {
         cabins: 4,        
         securityDeposit: 3000,
         bathrooms: 4,
-        discountText: "Per preventivi richiesti entro il 28 febbraio 2026, sarà applicato uno sconto del 15%.",
-        discountText_en: "For quotes requested by February 28, 2026, a 15% discount will be applied.",
         description: `
         <h2 class="text-2xl font-display mb-4">Pasqua in barca con Elyvian Dream</h2>
         <p class="mb-4">Festeggia la Pasqua sul mare con un’esperienza esclusiva a bordo delle nostre barche, pensata per chi desidera relax, privacy e comfort assoluto. Un modo unico per vivere una vacanza di Pasqua elegante e indimenticabile, lontano dalla routine.</p>
@@ -127,8 +125,6 @@ export const boatData = {
          cabins: 3, 
          securityDeposit: 1500,
          bathrooms: 3,
-         discountText: "Per preventivi richiesti entro il 28 febbraio 2026, sarà applicato uno sconto del 15%.",
-         discountText_en: "For quotes requested by February 28, 2026, a 15% discount will be applied.",
          description: `
          <h2 class="text-2xl font-display mb-4">Pasqua in barca con Elyvian Spirit</h2>
          <p class="mb-4">Rendi la tua Pasqua sul mare un momento davvero speciale, scegliendo un’esperienza unica a bordo dei nostri catamarani. Relax, privacy e servizi premium si uniscono per offrirti una vacanza di Pasqua raffinata, lontano dal caos e dalla quotidianità.</p>
@@ -212,7 +208,6 @@ export const boatData = {
         cabins: 4,        
         securityDeposit: 3000,
         bathrooms: 4,
-        discountText: "Per preventivi richiesti entro il 28 febbraio 2026, sarà applicato uno sconto del 15%.",
         description: `
         <p class="mb-4">Elyvian Dream è un catamarano di 14 metri progettato per chi desidera vivere il mare con libertà, comfort ed eleganza. Le quattro cabine matrimoniali con bagno en suite e doccia separata, offrono un’oasi di privacy e quiete, mentre gli spazi ampi e luminosi creano una vera dimora galleggiante, ideale per famiglie e gruppi di amici.</p>
         <p class="mb-4">Le linee contemporanee definiscono il suo stile: un salotto sospeso sul mare, perfetto per relax, conversazioni e tramonti indimenticabili. Ogni ambiente segue il ritmo naturale della vacanza, tra momenti lenti e contemplativi o esperienze più dinamiche.</p>
@@ -305,8 +300,6 @@ export const boatData = {
          maxGuests: 10,
          hasPremiumPackage: true,
          cabins: 3,         securityDeposit: 1500,         bathrooms: 3,
-         discountText: "Per preventivi richiesti entro il 28 febbraio 2026, sarà applicato uno sconto del 15%.",
-         discountText_en: "For quotes requested by February 28, 2026, a 15% discount will be applied.",
          description: `
          <p class="mb-4">Elyvian Spirit è un catamarano di 11,42 metri pensato per chi vive il mare con stile, eleganza e spirito d’avventura. Unisce performance e comfort in un equilibrio perfetto, offrendo un’esperienza di charter esclusiva e sofisticata.</p>
          <p class="mb-4">Navigare a bordo di Elyvian Spirit significa immergersi nel silenzio del mare e nella libertà del vento. Il design moderno e la doppia postazione di timoneria garantiscono pieno controllo e un’ampia visione sulle vele, trasformando ogni rotta in un momento di pura emozione.</p>
@@ -415,7 +408,6 @@ export const boatData = {
         cabins: 4,
         securityDeposit: 5000,
         bathrooms: 4,
-        discountText: "Per preventivi richiesti entro il 28 febbraio 2026, sarà applicato uno sconto del 15%.",
         description: `
         <p class="mb-4">Elyvian Breeze è uno yacht a vela di oltre 18 metri che incarna un’eleganza senza tempo. Pensato per chi desidera un’esperienza esclusiva immersa nel silenzio del mare, offre un rifugio raffinato dove linee pure, armonia e materiali di pregio definiscono un lusso autentico.</p>
         <p class="mb-4">Salire a bordo significa entrare in una dimensione riservata: design essenziale, volumi equilibrati e interni luminosi, progettati per unire comfort e privacy. Le 3 cabine con bagno en suite interpretano al meglio l’ospitalità contemporanea grazie ad arredi ricercati e dettagli curati.</p>
@@ -513,8 +505,6 @@ export const boatData = {
         cabins: 4,
         securityDeposit: 5000, 
         bathrooms: 4,
-        discountText: "Per preventivi richiesti entro il 28 febbraio 2026, sarà applicato uno sconto del 15%.",
-        discountText_en: "For quotes requested by February 28, 2026, a 15% discount will be applied.",
         description: `
         <h2 class="text-2xl font-display mb-4">Pasqua in barca con Elyvian Breeze</h2>
         <p class="mb-4">Vivi l'emozione di una crociera esclusiva a bordo di Elyvian Breeze. Un mix perfetto di prestazioni sportive e comfort di lusso per una Pasqua indimenticabile, tra relax e avventura.</p>

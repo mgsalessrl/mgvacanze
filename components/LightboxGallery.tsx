@@ -19,6 +19,8 @@ export function LightboxGallery({ images, title }: LightboxGalleryProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [mounted, setMounted] = useState(false);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -31,6 +33,18 @@ export function LightboxGallery({ images, title }: LightboxGalleryProps) {
       document.body.style.overflow = 'unset';
     };
   }, [isOpen]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') prevImage();
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'Escape') closeLightbox();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, currentIndex]);
 
   // Normalize images to GalleryImage format
   const normalizedImages: GalleryImage[] = useMemo(() => {
@@ -76,6 +90,27 @@ export function LightboxGallery({ images, title }: LightboxGalleryProps) {
     <div 
         className="fixed inset-0 z-[999999] bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200"
         onClick={closeLightbox}
+        onTouchStart={(e) => {
+          setTouchEnd(null);
+          setTouchStart(e.targetTouches[0].clientX);
+        }}
+        onTouchMove={(e) => {
+          setTouchEnd(e.targetTouches[0].clientX);
+        }}
+        onTouchEnd={() => {
+          if (!touchStart || !touchEnd) return;
+          const distance = touchStart - touchEnd;
+          const minSwipeDistance = 50;
+          if (Math.abs(distance) >= minSwipeDistance) {
+            if (distance > 0) {
+              nextImage();
+            } else {
+              prevImage();
+            }
+          }
+          setTouchStart(null);
+          setTouchEnd(null);
+        }}
     >
       {/* Close Button */}
       <button 
@@ -87,18 +122,18 @@ export function LightboxGallery({ images, title }: LightboxGalleryProps) {
 
       {/* Previous Button */}
       <button 
-        className="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors p-2 z-[110] hidden md:block"
+        className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors p-2 z-[110] block"
         onClick={prevImage}
       >
-        <ChevronLeft className="w-10 h-10" />
+        <ChevronLeft className="w-8 h-8 md:w-10 md:h-10" />
       </button>
 
       {/* Next Button */}
       <button 
-        className="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors p-2 z-[110] hidden md:block"
+        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors p-2 z-[110] block"
         onClick={nextImage}
       >
-        <ChevronRight className="w-10 h-10" />
+        <ChevronRight className="w-8 h-8 md:w-10 md:h-10" />
       </button>
 
       {/* Main Image Container */}

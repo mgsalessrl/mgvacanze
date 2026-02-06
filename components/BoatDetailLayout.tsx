@@ -24,8 +24,6 @@ interface BoatData {
     guests: number;
     cabins: number;
     bathrooms: number;
-    discountText?: string;
-    discountText_en?: string;
     description: string; // HTML string
     description_en?: string;
     specs: {
@@ -65,14 +63,13 @@ export default function BoatDetailLayout({ data }: { data: BoatData }) {
   
   const subtitle = (isEn && data.subtitle_en) ? data.subtitle_en : data.subtitle;
   const description = (isEn && data.description_en) ? data.description_en : data.description;
-  const discountText = (isEn && data.discountText_en) ? data.discountText_en : data.discountText;
   const extraInfo = (isEn && data.extraInfo_en) ? data.extraInfo_en : data.extraInfo;
   const itinerary = (isEn && data.itinerary_en) ? data.itinerary_en : data.itinerary;
 
   return (
     <div className="bg-white min-h-screen pb-20">
       {/* Hero / Header Image */}
-      <div className="relative h-[60vh] w-full bg-gray-900 overflow-hidden">
+      <div className="relative h-[40vh] md:h-[60vh] w-full bg-gray-900 overflow-hidden">
         <Image 
           src={mainImage}
           alt={data.title}
@@ -104,14 +101,6 @@ export default function BoatDetailLayout({ data }: { data: BoatData }) {
         
         {/* Main Content */}
         <div className="lg:col-span-2 space-y-12">
-            {/* Discount Banner */}
-            {discountText && (
-                <div className="bg-brand-gold/10 border-l-4 border-brand-gold p-6 rounded-r-lg mb-8">
-                    <h3 className="text-brand-dark font-bold text-lg mb-1">{t('boat.special_offer')}</h3>
-                    <p className="text-gray-700">{discountText}</p>
-                </div>
-            )}
-
             {/* ITINERARY TIMELINE - TOP PRIORITY VISIBILITY */}
             {itinerary && (
                 <div className="bg-white p-6 rounded-xl border-2 border-brand-gold/20 shadow-sm mb-10">

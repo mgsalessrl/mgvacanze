@@ -1,7 +1,10 @@
 import BoatDetailLayout from '@/components/BoatDetailLayout';
 import { boatData } from '@/lib/boat_data';
 import { createClient } from '@/lib/supabase-server';
+import { getSeoMetadata } from '@/lib/seo-config';
+import { Metadata } from 'next';
 
+export const metadata: Metadata = getSeoMetadata('pasqua-elyvian-breeze');
 export const dynamic = 'force-dynamic';
 
 export default async function Page() {
@@ -18,11 +21,12 @@ export default async function Page() {
   });
 
   const data = {
-    ...boatData['pasqua-dream'],
-    slug: 'elyvian-dream',
-    propertyId: 1927,
+    ...boatData['pasqua-breeze'],
+    slug: 'elyvian-breeze',
+    propertyId: 3056,
     isEasterOffer: true,
-    title: "Pasqua in Italia – Elyvian Dream",
+    title: "Pasqua in Italia – Elyvian Breeze",
+    heroImagePosition: 'bottom-center',
     extraOptions,
     packageDates: {
         start: "2026-04-03",
@@ -40,6 +44,5 @@ export default async function Page() {
         ]
     }
   };
-  
   return <BoatDetailLayout data={data} />;
 }

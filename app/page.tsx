@@ -131,9 +131,9 @@ export default function Home() {
                         <p className="text-sm uppercase tracking-wider text-gray-400 mb-1">{t('easter_home.card2.catholic')}</p>
                         <p className="font-bold text-lg">{t('easter_home.card2.dates1')}</p>
                         <div className="flex flex-col gap-1 mt-2">
-                             <Link href="/noleggio/pasqua-dream" className="text-brand-gold text-sm font-bold hover:underline">Elyvian Dream &rarr;</Link>
-                             <Link href="/noleggio/pasqua-spirit-italia" className="text-brand-gold text-sm font-bold hover:underline">Elyvian Spirit &rarr;</Link>
-                             <Link href="/noleggio/pasqua-in-mare-elyvian-breeze" className="text-brand-gold text-sm font-bold hover:underline">Elyvian Breeze &rarr;</Link>
+                             <Link href="/noleggio/pasqua-elyvian-dream" className="text-brand-gold text-sm font-bold hover:underline">Elyvian Dream &rarr;</Link>
+                             <Link href="/noleggio/pasqua-elyvian-spirit" className="text-brand-gold text-sm font-bold hover:underline">Elyvian Spirit &rarr;</Link>
+                             <Link href="/noleggio/pasqua-elyvian-breeze" className="text-brand-gold text-sm font-bold hover:underline">Elyvian Breeze &rarr;</Link>
                         </div>
                     </div>
                     {/* PASQUA GRECIA (8-13 APR) */}
@@ -141,9 +141,9 @@ export default function Home() {
                         <p className="text-sm uppercase tracking-wider text-gray-400 mb-1">{t('easter_home.card2.orthodox')}</p>
                         <p className="font-bold text-lg">8 Aprile - 13 Aprile 2026</p>
                          <div className="flex flex-col gap-1 mt-2">
-                             <Link href="/noleggio/pasqua-dream-grecia" className="text-brand-gold text-sm font-bold hover:underline">Elyvian Dream &rarr;</Link>
-                             <Link href="/noleggio/pasqua-spirit" className="text-brand-gold text-sm font-bold hover:underline">Elyvian Spirit &rarr;</Link>
-                             <Link href="/noleggio/pasqua-breeze-grecia" className="text-brand-gold text-sm font-bold hover:underline">Elyvian Breeze &rarr;</Link>
+                             <Link href="/noleggio/pasqua-grecia-elyvian-dream" className="text-brand-gold text-sm font-bold hover:underline">Elyvian Dream &rarr;</Link>
+                             <Link href="/noleggio/pasqua-grecia-elyvian-spirit" className="text-brand-gold text-sm font-bold hover:underline">Elyvian Spirit &rarr;</Link>
+                             <Link href="/noleggio/pasqua-grecia-elyvian-breeze" className="text-brand-gold text-sm font-bold hover:underline">Elyvian Breeze &rarr;</Link>
                         </div>
                     </div>
                 </div>
@@ -175,7 +175,7 @@ export default function Home() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {/* Boat 1 - Spirit */}
-                <Link href="/boat/elyvian-spirit" className="group block">
+                <Link href="/noleggio-catamarano/elyvian-spirit" className="group block">
                      <div className="relative h-[400px] md:h-[500px] overflow-hidden mb-6 rounded-sm shadow-md">
                          <Image 
                             src="/images/img_sito/home/elvyanspirithome.jpg"
@@ -190,7 +190,7 @@ export default function Home() {
                 </Link>
 
                 {/* Boat 2 - Breeze */}
-                <Link href="/boat/elyvian-breeze" className="group block">
+                <Link href="/noleggio-yacht/elyvian-breeze" className="group block">
                     <div className="relative h-[400px] md:h-[500px] overflow-hidden mb-6 rounded-sm shadow-md">
                          <Image 
                             src="/images/img_sito/home/elyvianbreezehome.jpg"
@@ -205,7 +205,7 @@ export default function Home() {
                 </Link>
 
                  {/* Boat 3 - Dream */}
-                 <Link href="/boat/elyvian-dream" className="group block">
+                 <Link href="/noleggio-catamarano/elyvian-dream" className="group block">
                      <div className="relative h-[400px] md:h-[500px] overflow-hidden mb-6 rounded-sm shadow-md">
                          <Image 
                             src="/images/img_sito/home/elvyandreamhome.jpg"

@@ -21,7 +21,6 @@ const playfair = Playfair_Display({
 
 import { Navbar } from "@/components/NavbarFooter";
 import FooterClient from "@/components/FooterClient";
-import EasterPromoModal from "@/components/home/EasterPromoModal";
 import IubendaScript from "@/components/IubendaScript";
 import SpecialRequests from "@/components/SpecialRequests";
 import AuthErrorListener from "@/components/AuthErrorListener";
@@ -47,7 +46,6 @@ export default function RootLayout({
           <SpecialRequests />
           <FooterClient />
           <IubendaScript />
-          <EasterPromoModal />
         </I18nProvider>
       </body>
     </html>
