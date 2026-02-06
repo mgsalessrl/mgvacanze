@@ -22,9 +22,9 @@ export default function NavbarClient({ user, role = 'user' }: NavbarClientProps)
 
   return (
     <header className="bg-brand-dark shadow-sm sticky top-0 z-50">
-      <div className="container mx-auto px-4 h-24 flex items-center justify-between">
+      <div className="container mx-auto px-4 h-24 flex items-center justify-between gap-4 xl:gap-8">
         {/* Logo */}
-        <Link href="/" className="relative block w-48 h-12 z-50">
+        <Link href="/" className="relative block w-48 h-12 z-50 shrink-0">
           <Image 
             src="/images/img_sito/loghi/logo-navbar.png"
             alt="MG Vacanze"
@@ -35,12 +35,12 @@ export default function NavbarClient({ user, role = 'user' }: NavbarClientProps)
         </Link>
         
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-white hover:text-brand-gold font-display text-lg tracking-wide uppercase transition-colors">{t('nav.home')}</Link>
+        <nav className="hidden lg:flex items-center space-x-2 xl:space-x-6">
+            <Link href="/" className="text-white hover:text-brand-gold font-display text-sm xl:text-lg tracking-wide uppercase transition-colors whitespace-nowrap">{t('nav.home')}</Link>
             
             {/* Noleggio Settimanale Dropdown */}
             <div className="relative group">
-                <button className="text-white hover:text-brand-gold font-display text-lg tracking-wide uppercase transition-colors flex items-center focus:outline-none py-4">
+                <button className="text-white hover:text-brand-gold font-display text-sm xl:text-lg tracking-wide uppercase transition-colors flex items-center focus:outline-none py-4 text-left">
                     {t('nav.week_rental')}
                 </button>
                 <div className="absolute left-0 mt-0 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform z-50">
@@ -50,14 +50,14 @@ export default function NavbarClient({ user, role = 'user' }: NavbarClientProps)
                 </div>
             </div>
 
-            <Link href="/itinerari" className="text-white hover:text-brand-gold font-display text-lg tracking-wide uppercase transition-colors">{t('nav.itineraries')}</Link>
+            <Link href="/itinerari" className="text-white hover:text-brand-gold font-display text-sm xl:text-lg tracking-wide uppercase transition-colors whitespace-nowrap">{t('nav.itineraries')}</Link>
 
-            <Link href="/servizi" className="text-white hover:text-brand-gold font-display text-lg tracking-wide uppercase transition-colors">{t('nav.services')}</Link>
-            <Link href="/contact" className="text-white hover:text-brand-gold font-display text-lg tracking-wide uppercase transition-colors">{t('nav.contact')}</Link>
+            <Link href="/servizi" className="text-white hover:text-brand-gold font-display text-sm xl:text-lg tracking-wide uppercase transition-colors whitespace-nowrap">{t('nav.services')}</Link>
+            <Link href="/contact" className="text-white hover:text-brand-gold font-display text-sm xl:text-lg tracking-wide uppercase transition-colors whitespace-nowrap">{t('nav.contact')}</Link>
         </nav>
 
         {/* Desktop CTA */}
-        <div className="hidden md:flex items-center space-x-6">
+        <div className="hidden lg:flex items-center space-x-4 xl:space-x-6 shrink-0">
              {/* Language Selector */}
              <div className="hidden lg:flex items-center space-x-1 text-white text-sm font-medium">
                 <button 
@@ -94,7 +94,7 @@ export default function NavbarClient({ user, role = 'user' }: NavbarClientProps)
 
         {/* Mobile Menu Toggle */}
         <button 
-          className="md:hidden text-white z-50 p-2"
+          className="lg:hidden text-white z-50 p-2"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -102,7 +102,7 @@ export default function NavbarClient({ user, role = 'user' }: NavbarClientProps)
         </button>
 
         {/* Mobile Menu Overlay */}
-        <div className={`fixed inset-0 bg-brand-dark/95 backdrop-blur-sm z-40 transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'} md:hidden flex flex-col pt-28 px-6`}>
+        <div className={`fixed inset-0 bg-brand-dark/95 backdrop-blur-sm z-40 transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'} lg:hidden flex flex-col pt-28 px-6`}>
             
             <nav className="flex flex-col space-y-6 text-center">
                 <Link href="/" className="text-white hover:text-brand-gold font-display text-2xl uppercase" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
