@@ -214,13 +214,7 @@ export default function BoatDetailLayout({ data }: { data: BoatData }) {
                                     <h3 className="text-xl font-display text-brand-dark mb-4">{t('boat.services_included')}</h3>
                                     <ul className="space-y-2 text-gray-600 text-sm">
                                         {data.servicesIncluded.map((s, i) => (
-                                            <li key={i}>• {
-                                                s.toLowerCase().includes('noleggio') ? t('service.name.rental') :
-                                                s.toLowerCase().includes('assicurazione') ? t('service.name.insurance') :
-                                                s.toLowerCase().includes('dotazione') ? t('service.name.starter_pack') :
-                                                s.toLowerCase().includes('cocktail') ? t('service.name.welcome') :
-                                                s
-                                            }</li>
+                                            <li key={i}>• {t(s)}</li>
                                         ))}
                                     </ul>
                                 </div>
@@ -304,13 +298,7 @@ export default function BoatDetailLayout({ data }: { data: BoatData }) {
                             <h3 className="text-xl font-display text-brand-dark mb-4">{t('boat.services_included')}</h3>
                             <ul className="space-y-2 text-gray-600 text-sm">
                                 {data.servicesIncluded.map((s, i) => (
-                                    <li key={i}>• {
-                                        s.toLowerCase().includes('noleggio') ? t('service.name.rental') :
-                                        s.toLowerCase().includes('assicurazione') ? t('service.name.insurance') :
-                                        s.toLowerCase().includes('dotazione') ? t('service.name.starter_pack') :
-                                        s.toLowerCase().includes('cocktail') ? t('service.name.welcome') :
-                                        s
-                                    }</li>
+                                    <li key={i}>• {t(s)}</li>
                                 ))}
                             </ul>
                         </div>

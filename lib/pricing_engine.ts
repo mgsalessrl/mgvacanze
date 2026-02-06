@@ -158,6 +158,7 @@ export function calculateCharterPrice(
     let basePrice = 0;
     let isEaster = false;
     let appliedPeriodStr = '';
+    let firstWeekPrice = 0;
 
     // Mappa boatId frontend agli ID prezzi
     let priceKey = '';
@@ -179,27 +180,40 @@ export function calculateCharterPrice(
         }
     }
 
-    // 2. Se non è Pasqua, calcola in base ai range
+    // 2. Se non è Pasqua, calcola in base ai range (prezzo per settimana)
     if (!isEaster && priceKey && SEASON_PRICES[priceKey]) {
         const prices = SEASON_PRICES[priceKey];
-        // Trova il periodo in cui ricade la start date
-        const checkDate = startDate; 
-        
-        const found = prices.find(p => {
-             // simplified check assuming current year
-             const start = getYearDate(p.start);
-             const end = getYearDate(p.end);
-             // Handle wrapper year case if needed, but for 2026 simple check
-             return checkDate >= start && checkDate < end;
-        });
+        const totalDays = differenceInDays(endDate, startDate);
+        const numWeeks = Math.max(1, Math.ceil(totalDays / 7));
 
-        if (found) {
-            basePrice = found.price;
-            appliedPeriodStr = `${found.start} - ${found.end}`;
-        } else {
-             // Default fallback if not found
-             if (prices.length > 0) basePrice = prices[0].price; // Fallback
+        // Helper: find the season price for a given date
+        const findPriceForDate = (date: Date): PricePeriod | undefined => {
+            return prices.find(p => {
+                const start = getYearDate(p.start);
+                const end = getYearDate(p.end);
+                return date >= start && date < end;
+            });
+        };
+
+        const periodSet = new Set<string>();
+        let firstWeekPrice = 0;
+
+        for (let w = 0; w < numWeeks; w++) {
+            const weekStart = addDays(startDate, w * 7);
+            const found = findPriceForDate(weekStart);
+            if (found) {
+                basePrice += found.price;
+                periodSet.add(`${found.start} - ${found.end}`);
+                if (w === 0) firstWeekPrice = found.price;
+            } else if (prices.length > 0) {
+                // Fallback to first period price
+                basePrice += prices[0].price;
+                periodSet.add(`${prices[0].start} - ${prices[0].end}`);
+                if (w === 0) firstWeekPrice = prices[0].price;
+            }
         }
+
+        appliedPeriodStr = Array.from(periodSet).join(' / ');
     }
 
     // --- DISCOUNT LOGIC START ---
@@ -346,7 +360,7 @@ export function calculateCharterPrice(
         appliedDiscount: appliedDiscountsList.length > 0 ? appliedDiscountsList[0] : undefined,
         details: {
             days: differenceInDays(endDate, startDate) || 7,
-            weekPrice: basePrice,
+            weekPrice: isPackage || isEaster ? basePrice : (firstWeekPrice || basePrice),
             period: appliedPeriodStr,
             isEaster: isEaster,
             extras: extrasDetails
